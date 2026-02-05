@@ -2,29 +2,38 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ApartmentCard } from './ApartmentCard';
 import { Button } from '@/components/ui/button';
+import apartmentImage from '@/assets/apartment-interior.png';
 
 const blockAPartments = [
-  { name: "Banesa A1", size: "78.65 m²", floor: "Përdhesë", rooms: "2+1", hasTerrace: true },
-  { name: "Banesa A2", size: "83.86 m²", floor: "Përdhesë", rooms: "2+1", hasTerrace: true },
-  { name: "Banesa A3", size: "52.00 m²", floor: "Kati 1", rooms: "1+1", hasTerrace: false },
-  { name: "Banesa A4", size: "78.65 m²", floor: "Kati 1", rooms: "2+1", hasTerrace: true },
-  { name: "Banesa A5", size: "83.86 m²", floor: "Kati 1", rooms: "2+1", hasTerrace: true },
-  { name: "Banesa A6", size: "52.00 m²", floor: "Kati 2", rooms: "1+1", hasTerrace: false },
+  { name: "Banesa A1", size: "78.65 m²", floor: "Përdhesë", rooms: "2+1", hasTerrace: true, image: apartmentImage },
+  { name: "Banesa A2", size: "83.86 m²", floor: "Përdhesë", rooms: "2+1", hasTerrace: true, image: apartmentImage },
+  { name: "Banesa A3", size: "52.00 m²", floor: "Kati 1", rooms: "1+1", hasTerrace: false, image: apartmentImage },
+  { name: "Banesa A4", size: "78.65 m²", floor: "Kati 1", rooms: "2+1", hasTerrace: true, image: apartmentImage },
+  { name: "Banesa A5", size: "83.86 m²", floor: "Kati 1", rooms: "2+1", hasTerrace: true, image: apartmentImage },
+  { name: "Banesa A6", size: "52.00 m²", floor: "Kati 2", rooms: "1+1", hasTerrace: false, image: apartmentImage },
 ];
 
 const blockBPartments = [
-  { name: "Banesa B1", size: "92.45 m²", floor: "Përdhesë", rooms: "3+1", hasTerrace: true },
-  { name: "Banesa B2", size: "136.00 m²", floor: "Përdhesë", rooms: "4+1", hasTerrace: true },
-  { name: "Banesa B3", size: "78.20 m²", floor: "Kati 1", rooms: "2+1", hasTerrace: true },
-  { name: "Banesa B4", size: "92.45 m²", floor: "Kati 1", rooms: "3+1", hasTerrace: true },
-  { name: "Banesa B5", size: "136.00 m²", floor: "Kati 2", rooms: "4+1", hasTerrace: true },
-  { name: "Banesa B6", size: "78.20 m²", floor: "Kati 2", rooms: "2+1", hasTerrace: false },
+  { name: "Banesa B1", size: "92.45 m²", floor: "Përdhesë", rooms: "3+1", hasTerrace: true, image: apartmentImage },
+  { name: "Banesa B2", size: "136.00 m²", floor: "Përdhesë", rooms: "4+1", hasTerrace: true, image: apartmentImage },
+  { name: "Banesa B3", size: "78.20 m²", floor: "Kati 1", rooms: "2+1", hasTerrace: true, image: apartmentImage },
+  { name: "Banesa B4", size: "92.45 m²", floor: "Kati 1", rooms: "3+1", hasTerrace: true, image: apartmentImage },
+  { name: "Banesa B5", size: "136.00 m²", floor: "Kati 2", rooms: "4+1", hasTerrace: true, image: apartmentImage },
+  { name: "Banesa B6", size: "78.20 m²", floor: "Kati 2", rooms: "2+1", hasTerrace: false, image: apartmentImage },
 ];
 
 export const ApartmentsSection = () => {
   const [activeBlock, setActiveBlock] = useState<'A' | 'B'>('A');
   
   const apartments = activeBlock === 'A' ? blockAPartments : blockBPartments;
+
+  const handleRequestCatalog = () => {
+    const message = encodeURIComponent(
+      'Përshëndetje! 👋\n\nDo të doja të kërkoja *katalogun e plotë* të banesave të Gashi Grand Complex – me plane, çmime dhe informacione të detajuara.\n\nFaleminderit!'
+    );
+    const whatsappNumber = '38345305205';
+    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+  };
 
   return (
     <section id="apartments" className="py-24 bg-secondary/30">
@@ -89,8 +98,8 @@ export const ApartmentsSection = () => {
           viewport={{ once: true }}
           className="text-center mt-12"
         >
-          <Button variant="gold" size="xl">
-            Shkarko Katalogun e Plotë
+          <Button variant="gold" size="xl" onClick={handleRequestCatalog}>
+            Kërko Katalogun
           </Button>
         </motion.div>
       </div>

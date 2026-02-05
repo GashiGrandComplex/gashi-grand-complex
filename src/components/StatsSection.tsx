@@ -59,8 +59,8 @@ const StatItem = ({ icon, value, suffix = '', label, delay }: StatItemProps) => 
 export const StatsSection = () => {
   const stats = [
     { icon: <Home className="w-8 h-8 text-charcoal" />, value: 91, suffix: '+', label: 'Banesa të Shitura' },
-    { icon: <Building className="w-8 h-8 text-charcoal" />, value: 31, label: 'Objekte të Ndërtuara' },
-    { icon: <Calendar className="w-8 h-8 text-charcoal" />, value: 20, suffix: '+', label: 'Vite Përvojë' },
+    { icon: <Building className="w-8 h-8 text-charcoal" />, value: 2, label: 'Objekte të Ndërtuara' },
+    { icon: <Calendar className="w-8 h-8 text-charcoal" />, value: 17, suffix: '+', label: 'Vite Përvojë' },
     { icon: <Award className="w-8 h-8 text-charcoal" />, value: 100, suffix: '%', label: 'Kënaqësi' },
   ];
 

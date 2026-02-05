@@ -9,6 +9,7 @@ interface ApartmentCardProps {
   hasTerrace?: boolean;
   index: number;
   features?: string[];
+  image?: string;
 }
 
 export const ApartmentCard = ({ 
@@ -18,7 +19,8 @@ export const ApartmentCard = ({
   rooms, 
   hasTerrace, 
   index,
-  features = ["Ngrohje qendrore", "Parking", "Ashensor"]
+  features = ["Ngrohje qendrore", "Parking", "Ashensor"],
+  image
 }: ApartmentCardProps) => {
   return (
     <motion.div
@@ -28,11 +30,22 @@ export const ApartmentCard = ({
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className="group bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-gold transition-all duration-500 border border-border hover:border-gold/50"
     >
-      {/* Floor Plan Placeholder */}
+      {/* Apartment Image */}
       <div className="relative h-56 bg-gradient-to-br from-muted to-secondary overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <Building2 className="w-20 h-20 text-gold/30" />
-        </div>
+        {image ? (
+          <>
+            <img 
+              src={image} 
+              alt={name}
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent" />
+          </>
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Building2 className="w-20 h-20 text-gold/30" />
+          </div>
+        )}
         <div className="absolute top-4 left-4 right-4 flex justify-between items-start">
           <span className="bg-charcoal/80 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full">
             {floor}

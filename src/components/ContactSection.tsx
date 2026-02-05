@@ -17,18 +17,34 @@ export const ContactSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Format the message for WhatsApp
+    const whatsappMessage = `*Mesazh i ri nga Website*%0A%0A` +
+      `*Emri:* ${formData.name}%0A` +
+      `*Email:* ${formData.email}%0A` +
+      `*Telefoni:* ${formData.phone}%0A%0A` +
+      `*Mesazhi:*%0A${formData.message}`;
+    
+    // WhatsApp business number
+    const whatsappNumber = '38345305205';
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+    
+    // Open WhatsApp in new tab
+    window.open(whatsappUrl, '_blank');
+    
     toast({
-      title: "Mesazhi u dërgua!",
-      description: "Do t'ju kontaktojmë së shpejti.",
+      title: "Duke ju drejtuar në WhatsApp",
+      description: "Mund të vazhdoni bisedën në WhatsApp.",
     });
+    
     setFormData({ name: '', email: '', phone: '', message: '' });
   };
 
   const contactInfo = [
     { icon: <Phone className="w-5 h-5" />, label: 'Telefoni', value: '+383 45 305 205', href: 'tel:+38345305205' },
     { icon: <Mail className="w-5 h-5" />, label: 'Email', value: 'info@gashigrandcomplex.com', href: 'mailto:info@gashigrandcomplex.com' },
-    { icon: <MapPin className="w-5 h-5" />, label: 'Adresa', value: 'Prizren, Kosovë', href: '#' },
-    { icon: <Clock className="w-5 h-5" />, label: 'Orari', value: 'E Hënë - E Shtunë: 09:00 - 18:00', href: '#' },
+    { icon: <MapPin className="w-5 h-5" />, label: 'Adresa', value: 'Rruga Kastriotët, Prizren, Kosovë', href: 'https://maps.app.goo.gl/cWKwpMQayw38hxkQ9?g_st=aw' },
+    { icon: <Clock className="w-5 h-5" />, label: 'Orari', value: 'E Hënë - E Shtunë: 08:00 - 18:00', href: '#' },
   ];
 
   return (
@@ -64,6 +80,8 @@ export const ContactSection = () => {
               <motion.a
                 key={item.label}
                 href={item.href}
+                target={item.label === 'Adresa' ? '_blank' : undefined}
+                rel={item.label === 'Adresa' ? 'noopener noreferrer' : undefined}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -82,7 +100,7 @@ export const ContactSection = () => {
               </motion.a>
             ))}
 
-            {/* Map Placeholder */}
+            {/* Map */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -91,7 +109,7 @@ export const ContactSection = () => {
               className="h-48 rounded-xl bg-gradient-to-br from-muted to-secondary border border-border overflow-hidden"
             >
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47548.45265849458!2d20.707761099999998!3d42.21415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1353063cce7a36d9%3A0x1ba3851e97707b10!2sPrizren!5e0!3m2!1sen!2s!4v1702900000000!5m2!1sen!2s"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2960.024837476308!2d20.74097867648756!3d42.2144934710829!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13530f35d6ac7b8b%3A0x7e4e8b8f8b8f8b8f!2sRruga%20Kastriott%C3%ABt%2C%20Prizren!5e0!3m2!1sen!2s!4v1738449600000!5m2!1sen!2s"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -111,7 +129,7 @@ export const ContactSection = () => {
           >
             <form onSubmit={handleSubmit} className="p-8 rounded-2xl bg-card shadow-card border border-border">
               <h3 className="font-display text-2xl font-semibold text-foreground mb-6">
-                Dërgoni një Mesazh
+                Caktoni një Termin
               </h3>
               
               <div className="space-y-5">

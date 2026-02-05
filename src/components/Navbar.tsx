@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import logoImage from '@/assets/logo.png';
 
 const navLinks = [
   { name: 'Ballina', href: '#home' },
@@ -38,14 +37,22 @@ export const Navbar = () => {
       >
         <div className="container mx-auto px-4 flex items-center justify-between">
           {/* Logo */}
-          <a href="#home" className="flex items-center">
-            <img 
-              src={logoImage} 
-              alt="Gashi Grand Complex" 
-              className={`h-12 sm:h-16 transition-all duration-300 object-contain ${
-                isScrolled ? 'opacity-100' : 'opacity-100'
-              }`}
-            />
+          <a href="#home" className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-gradient-gold rounded-lg flex items-center justify-center">
+              <span className="text-charcoal font-display font-bold text-xl">G</span>
+            </div>
+            <div className="hidden sm:block">
+              <h1 className={`font-display text-lg font-semibold leading-tight transition-colors duration-300 ${
+                isScrolled ? 'text-foreground' : 'text-primary-foreground'
+              }`}>
+                Gashi Grand
+              </h1>
+              <p className={`text-xs tracking-widest uppercase transition-colors duration-300 ${
+                isScrolled ? 'text-muted-foreground' : 'text-primary-foreground/70'
+              }`}>
+                Complex
+              </p>
+            </div>
           </a>
 
           {/* Desktop Navigation */}
@@ -72,9 +79,11 @@ export const Navbar = () => {
               <Phone className="w-4 h-4" />
               +383 45 305 205
             </a>
+            <a href="#contact">
             <Button variant={isScrolled ? "gold" : "heroGold"} size="lg">
               Na Kontaktoni
             </Button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -117,6 +126,7 @@ export const Navbar = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
+        
               >
                 <Button variant="heroGold" size="xl">
                   Na Kontaktoni

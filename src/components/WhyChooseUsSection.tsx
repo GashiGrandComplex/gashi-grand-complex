@@ -9,7 +9,7 @@ const reasons = [
   },
   {
     icon: Award,
-    title: "10+ Vite Eksperiencë",
+    title: "17+ Vite Eksperiencë",
     description: "Kompania jonë ka realizuar me sukses dhjetëra projekte rezidenciale në Kosovë."
   },
   {
