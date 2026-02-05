@@ -29,7 +29,7 @@ export const Hero = () => {
   }, []);
 
   return (
-    <section id="home" className="relative h-screen min-h-[700px] overflow-hidden">
+    <section id="home" className="relative h-screen min-h-[100dvh] min-h-[700px] overflow-hidden">
       {/* Background Slideshow */}
       <div className="absolute inset-0">
         <AnimatePresence mode="wait" initial={false}>

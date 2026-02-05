@@ -12,7 +12,7 @@ import { Footer } from '@/components/Footer';
 
 const Index = () => {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen min-h-[100dvh] w-full max-w-[100vw] overflow-x-hidden">
       <Navbar />
       <Hero />
       <ApartmentsSection />

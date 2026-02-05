@@ -100,25 +100,32 @@ export const ContactSection = () => {
               </motion.a>
             ))}
 
-            {/* Map */}
-            <motion.div
+            {/* Map - lokacioni i saktë: https://maps.app.goo.gl/cWKwpMQayw38hxkQ9 */}
+            <motion.a
+              href="https://maps.app.goo.gl/cWKwpMQayw38hxkQ9?g_st=aw"
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
-              className="h-48 rounded-xl bg-gradient-to-br from-muted to-secondary border border-border overflow-hidden"
+              className="block h-48 sm:h-56 md:h-64 rounded-xl border border-border overflow-hidden bg-muted relative group focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
             >
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2960.024837476308!2d20.74097867648756!3d42.2144934710829!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13530f35d6ac7b8b%3A0x7e4e8b8f8b8f8b8f!2sRruga%20Kastriott%C3%ABt%2C%20Prizren!5e0!3m2!1sen!2s!4v1738449600000!5m2!1sen!2s"
+                src="https://www.google.com/maps?q=Rruga+Kastriotet,+Prizren,+Kosovo&output=embed&z=16"
                 width="100%"
                 height="100%"
-                style={{ border: 0 }}
+                style={{ border: 0, pointerEvents: 'none' }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Gashi Grand Complex Location"
+                title="Gashi Grand Complex - Kliko për të hapur në Google Maps"
               />
-            </motion.div>
+              <span className="absolute inset-0 rounded-xl" aria-hidden />
+              <span className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-gold text-charcoal text-xs font-semibold px-3 py-1.5 rounded-lg shadow-lg whitespace-nowrap">
+                Shiko në Google Maps →
+              </span>
+            </motion.a>
           </motion.div>
 
           {/* Contact Form */}

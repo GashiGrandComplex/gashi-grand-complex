@@ -16,8 +16,8 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-charcoal pt-16 pb-8">
-      <div className="container mx-auto px-4">
+    <footer className="bg-charcoal pt-16 pb-8 safe-bottom">
+      <div className="container mx-auto px-4 max-w-[100vw]">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <motion.div
